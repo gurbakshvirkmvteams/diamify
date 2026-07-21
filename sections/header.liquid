@@ -3,6 +3,8 @@
 <link rel="stylesheet" href="{{ 'component-menu-drawer.css' | asset_url }}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'component-cart-notification.css' | asset_url }}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'component-cart-items.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'custom.css' | asset_url }}">
+
 {%- if settings.predictive_search_enabled -%}
   <link rel="stylesheet" href="{{ 'component-price.css' | asset_url }}" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="{{ 'component-loading-overlay.css' | asset_url }}" media="print" onload="this.media='all'">
@@ -88,7 +90,7 @@
       padding-bottom: 0.5rem;
       padding-top: 0.5rem;
     }
-  }
+}
 </style>
 
 {%- style -%}
@@ -744,7 +746,76 @@
 {%- if settings.cart_type == "notification" -%}
   {%- render 'cart-notification', color_scheme: section.settings.color_scheme, desktop_menu_type: section.settings.menu_type_desktop -%}
 {%- endif -%}
+{% for block in section.blocks %}
+  {% if block.type == 'hero-block' %}
 
+    <section class="custom-hero">
+
+      <div class="custom-hero__bg">
+        {% if request.page_type == 'collection' and block.settings.collection_background_Image %}
+          {{
+            block.settings.collection_background_Image
+            | image_url: width: 2200
+            | image_tag: class: 'hero-bg-image'
+          }}
+        {% else %}
+          {{
+            block.settings.all_background_Image
+            | image_url: width: 2200
+            | image_tag: class: 'hero-bg-image'
+          }}
+        {% endif %}
+      </div>
+
+      <div
+        class="custom-hero__content"
+        style="
+          padding-top:{{ block.settings.padding_top }}px;
+          padding-bottom:{{ block.settings.padding_bottom }}px;
+          padding-left:{{ block.settings.padding_left }}px;
+          padding-right:{{ block.settings.padding_right }}px;
+        ">
+
+        {% if block.settings.hero_heading != blank %}
+          <div
+            class="hero-heading"
+            style="margin-bottom:{{ block.settings.heading_margin_bottom }}px;"
+          >
+            {{ block.settings.hero_heading }}
+          </div>
+        {% endif %}
+
+        {% if block.settings.hero_description != blank %}
+          <div
+            class="hero-description"
+            style="margin-bottom:{{ block.settings.description_margin_bottom }}px;"
+          >
+            {{ block.settings.hero_description }}
+          </div>
+        {% endif %}
+
+        <div class="hero-buttons">
+
+          {% if block.settings.left_button_text != blank %}
+            <a href="{{ block.settings.left_button_link }}" class="hero-btn">
+              {{ block.settings.left_button_text }}
+            </a>
+          {% endif %}
+
+          {% if block.settings.right_button_text != blank %}
+            <a href="{{ block.settings.right_button_link }}" class="hero-btn">
+              {{ block.settings.right_button_text }}
+            </a>
+          {% endif %}
+
+        </div>
+
+      </div>
+
+    </section>
+
+  {% endif %}
+{% endfor %}
 {% javascript %}
   class StickyHeader extends HTMLElement {
     constructor() {
@@ -1097,7 +1168,109 @@
   "blocks": [
     {
       "type": "@app"
+    },
+     {
+      "type": "hero-block",
+        "name":"Hero Block",
+        "settings": [
+        {
+          "type": "image_picker",
+          "id": "all_background_Image",
+          "label": "All pages background image"
+        },
+        {
+          "type": "image_picker",
+          "id": "collection_background_Image",
+          "label": "Collection page background image"
+        },{
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },{
+          "type":"richtext",
+          "id":"hero_heading",
+          "label":"Add section Heading"
+        },{
+          "type": "range",
+      "id": "heading_margin_bottom",
+      "label": "Heading Margin Bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+        },
+        {
+          "type":"richtext",
+          "id":"hero_description",
+          "label":"Add section Description"
+        },{
+          "type": "range",
+      "id": "description_margin_bottom",
+      "label": "Description Margin Bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+        },
+        {
+  "type": "text",
+  "id": "left_button_text",
+  "label": "Button Label"
+},
+{
+  "type": "url",
+  "id": "left_button_link",
+  "label": "Button Link"
+},
+{
+  "type": "text",
+  "id": "right_button_text",  
+  "label": "Right Button Label"
+},
+{
+  "type": "url",
+  "id": "right_button_link",
+  "label": "Button Link"
+},
+{
+      "type": "range",
+      "id": "padding_left",
+      "label": "Padding Left",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_right",
+      "label": "Padding Right",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
     }
+        ]
+      }
   ]
 }
 {% endschema %}
