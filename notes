@@ -1,0 +1,11 @@
+# Today's update:
+-- Learnt about metabobjects system to create for example- definition lists for about more than 100 users then render data as webpages as lists and foreach separate user
+
+# Diamify
+-- Customized Dawn Theme default settings according to the Figma design
+-- Created Header for all pages 
+-- Created hero section with logic to show differnt backgrounds for different pages 
+-- Added collections and customized collections section
+-- Created user customizeable about us section for homepage
+-- Added blogs section
+-- Created user adjustable newsletter section

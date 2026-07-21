@@ -43,6 +43,7 @@
         "template--18309637636369__6a3bb789-ce10-45f5-ae67-e2063ef8c76b-168016437761699a6e-1",
         "template--18309637636369__6a3bb789-ce10-45f5-ae67-e2063ef8c76b-168016437761699a6e-2"
       ],
+      "disabled": true,
       "custom_css": [],
       "settings": {
         "image": "shopify://shop_images/theme_cover_image.jpg",
@@ -60,6 +61,7 @@
     },
     "featured_collection": {
       "type": "featured-collection",
+      "disabled": true,
       "settings": {
         "title": "<strong>Featured products</strong>",
         "heading_size": "h1",
@@ -115,6 +117,7 @@
         "template--18309637636369__f1552b18-6017-4231-810d-74e61da22c37-1680164422d7fb2efc-1",
         "template--18309637636369__f1552b18-6017-4231-810d-74e61da22c37-1680164422d7fb2efc-2"
       ],
+      "disabled": true,
       "settings": {
         "image": "shopify://shop_images/theme_cover_image.jpg",
         "height": "adapt",
@@ -133,28 +136,45 @@
     "38cdf60f-e431-43b5-aac3-7e6215447d67": {
       "type": "collection-list",
       "blocks": {
+        "featured_collection_78X3iJ": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "rings"
+          }
+        },
+        "featured_collection_FW8zBB": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "earrings"
+          }
+        },
         "template--18309637636369__38cdf60f-e431-43b5-aac3-7e6215447d67-1680164898782d94ce-0": {
           "type": "featured_collection",
           "settings": {
-            "collection": "hydrogen"
+            "collection": "necklaces"
           }
         },
         "template--18309637636369__38cdf60f-e431-43b5-aac3-7e6215447d67-1680164898782d94ce-1": {
           "type": "featured_collection",
           "settings": {
-            "collection": "automated-collection"
+            "collection": "bracelets"
           }
         }
       },
       "block_order": [
+        "featured_collection_78X3iJ",
+        "featured_collection_FW8zBB",
         "template--18309637636369__38cdf60f-e431-43b5-aac3-7e6215447d67-1680164898782d94ce-0",
         "template--18309637636369__38cdf60f-e431-43b5-aac3-7e6215447d67-1680164898782d94ce-1"
       ],
       "settings": {
         "title": "<strong>Collections</strong>",
-        "heading_size": "h1",
+        "heading_size": "h0",
+        "collection_description": "<p>We’ve launched our collection of rings, earrings, bracelets, and necklaces</p><p>inspired and designed with our community.</p>",
+        "button_text": "Discover Our Collection",
+        "button_link": "shopify://collections/rings",
         "image_ratio": "portrait",
-        "columns_desktop": 2,
+        "columns_desktop": 4,
         "color_scheme": "background-1",
         "show_view_all": false,
         "columns_mobile": "1",
@@ -162,12 +182,110 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "featured_blog_wTqtfW": {
+      "type": "featured-blog",
+      "name": "t:sections.featured-blog.presets.name",
+      "settings": {
+        "heading": "Blog posts",
+        "heading_size": "h1",
+        "blog": "news",
+        "post_limit": 3,
+        "columns_desktop": 3,
+        "color_scheme": "background-1",
+        "show_image": true,
+        "show_date": true,
+        "show_author": false,
+        "show_view_all": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "custom_image_text_Vyt7Wk": {
+      "type": "custom-image-text",
+      "name": "Image Text Banner",
+      "settings": {
+        "my_custom_image": "shopify://shop_images/unsplash_hXhMzWysB8s.png",
+        "heading": "<h1>We Are Friendly</h1>",
+        "description": "<p>Excellence and value are the two cornerstones of our service.</p><p><br/>We dedicate our experience and time to give individual attention to our customers. If you are looking for inspiration or advice, we will help you make an informed decision.</p>",
+        "left_button_text": "",
+        "left_button_link": "",
+        "right_button_text": "",
+        "right_button_link": "",
+        "banner_text_width": 444,
+        "content_gap": 80,
+        "layout": "image_first",
+        "background_color": "#111111",
+        "padding_top": 105,
+        "padding_bottom": 0,
+        "section_min_height": 100
+      }
+    },
+    "custom_image_text_McqCM4": {
+      "type": "custom-image-text",
+      "name": "Image Text Banner",
+      "settings": {
+        "my_custom_image": "shopify://shop_images/unsplash_hXhMzWysB8s.png",
+        "heading": "<h1>We Are Reliable</h1>",
+        "description": "<p>At Diamify, diamonds are our métier. </p><p>Custom made to perfection.</p><p><br/>Diamify understands that finding your exact request, whether it be a loose diamond or jewelry, it can be a difficult task. Rest assured that our associates will be with you every step of the way to make sure that you get exactly what you want at a price you can afford.</p>",
+        "left_button_text": "Speak With A Designer",
+        "left_button_link": "",
+        "right_button_text": "Speak With A Diamond Expert",
+        "right_button_link": "",
+        "banner_text_width": 420,
+        "content_gap": 80,
+        "layout": "text_first",
+        "background_color": "#111111",
+        "padding_top": 0,
+        "padding_bottom": 90,
+        "section_min_height": 100
+      }
+    },
+    "custom_text_card_wn4eB7": {
+      "type": "custom-text-card",
+      "name": "Card Banner",
+      "settings": {
+        "background_image": "shopify://shop_images/Rectangle_35.png",
+        "mobile_background_image": "shopify://shop_images/Rectangle_35.png",
+        "desktop_height": 300,
+        "mobile_height": 280,
+        "padding_top": 130,
+        "padding_bottom": 130,
+        "overlay_color": "#000000",
+        "overlay_opacity": 0,
+        "card_width": 470,
+        "card_padding": 40,
+        "card_background": "#ffffff",
+        "card_border_width": 1,
+        "card_border_color": "#8fd8ff",
+        "card_border_radius": 0,
+        "card_shadow": true,
+        "text_alignment": "center",
+        "heading": "<h2>CREATE</h2>",
+        "heading_size": 48,
+        "heading_color": "#111111",
+        "tagline": "With A Third Generation Diamond Dealer.",
+        "tagline_size": 16,
+        "tagline_color": "#222222",
+        "description": "It all starts with an email.",
+        "description_size": 14,
+        "description_color": "#555555",
+        "button_label": "Email Ran",
+        "button_link": "",
+        "button_background": "rgba(0,0,0,0)",
+        "button_text_color": "#111111",
+        "button_radius": 0
+      }
     }
   },
   "order": [
     "6a3bb789-ce10-45f5-ae67-e2063ef8c76b",
     "featured_collection",
     "f1552b18-6017-4231-810d-74e61da22c37",
-    "38cdf60f-e431-43b5-aac3-7e6215447d67"
+    "38cdf60f-e431-43b5-aac3-7e6215447d67",
+    "featured_blog_wTqtfW",
+    "custom_image_text_Vyt7Wk",
+    "custom_image_text_McqCM4",
+    "custom_text_card_wn4eB7"
   ]
 }

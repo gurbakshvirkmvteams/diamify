@@ -34,7 +34,14 @@
             </div>
           </div>
         {% else %}
-          <div class="custom-info-content" style="max-width:{{ section.settings.banner_text_width }}px;">
+          {% comment %} <div class="custom-info-content" style="max-width:{{ section.settings.banner_text_width }}px;"> {% endcomment %}
+        <div
+                class="custom-info-content"
+            style="
+                max-width:{{ section.settings.banner_text_width }}px;
+                text-align:{{ section.settings.text_alignment }};
+            "
+            >
             {{ section.settings.heading }}
             {{ section.settings.description }}
 
@@ -42,7 +49,7 @@
           <div class="custom-info-image">
             {% if section.settings.my_custom_image %}
               {{
-                section.settings.my_custom_image | image_url: width: 1200 | image_tag: loading: 'lazy', class: 'custom-imag e'
+                section.settings.my_custom_image | image_url: width: 1200 | image_tag: loading: 'lazy', class: 'custom-image'
               }}
             {% endif %}
           </div>
@@ -52,13 +59,36 @@
       <div class="hero-buttons">
 
         {% if section.settings.left_button_text != blank %}
-          <a href="{{ section.settings.left_button_link }}" class="hero-btn">
-            {{ section.settings.left_button_text }}
-          </a>
+          <a
+  href="{{ section.settings.left_button_link }}"
+  class="hero-btn"
+  style="
+    background:{{ section.settings.button_bg }};
+    color:{{ section.settings.button_text }};
+    border:1px solid {{ section.settings.button_border }};
+    border-radius:{{ section.settings.button_radius }}px;
+    padding:{{ section.settings.button_padding_y }}px {{ section.settings.button_padding_x }}px;
+    text-decoration:{{ section.settings.button_decoration }};
+    font-size:{{ section.settings.button_font_size }}px;
+    font-weight:{{ section.settings.button_weight }};
+  "
+>
+  {{ section.settings.left_button_text }}
+</a>
         {% endif %}
 
         {% if section.settings.right_button_text != blank %}
-          <a href="{{ section.settings.right_button_link }}" class="hero-btn">
+          <a href="{{ section.settings.right_button_link }}" class="hero-btn"
+           style="
+    background:{{ section.settings.button_bg }};
+    color:{{ section.settings.button_text }};
+    border:1px solid {{ section.settings.button_border }};
+    border-radius:{{ section.settings.button_radius }}px;
+    padding:{{ section.settings.button_padding_y }}px {{ section.settings.button_padding_x }}px;
+    text-decoration:{{ section.settings.button_decoration }};
+    font-size:{{ section.settings.button_font_size }}px;
+    font-weight:{{ section.settings.button_weight }};
+  ">
             {{ section.settings.right_button_text }}
           </a>
         {% endif %}
@@ -84,7 +114,36 @@
         "label": "Description",
         "type": "richtext",
         "id": "description"
-      },
+      },{
+  "type": "range",
+  "id": "image_height",
+  "label": "Image Height",
+  "min": 200,
+  "max": 800,
+  "step": 10,
+  "unit": "px",
+  "default": 500
+},  
+      {
+  "type": "select",
+  "id": "text_alignment",
+  "label": "Text Alignment",
+  "default": "left",
+  "options": [
+    {
+      "value": "left",
+      "label": "Left"
+    },
+    {
+      "value": "center",
+      "label": "Center"
+    },
+    {
+      "value": "right",
+      "label": "Right"
+    }
+  ]
+},
       {
         "type": "text",
         "id": "left_button_text",
@@ -110,7 +169,68 @@
         "step": 6,
         "unit": "px",
         "default": 558
-      }, {
+      },{
+  "type": "color",
+  "id": "button_bg",
+  "label": "Button Background",
+  "default": "#111111"
+},
+{
+  "type": "color",
+  "id": "button_text",
+  "label": "Button Text",
+  "default": "#ffffff"
+},
+{
+  "type": "color",
+  "id": "button_border",
+  "label": "Button Border",
+  "default": "#ffffff"
+},
+{
+  "type": "color",
+  "id": "button_hover_bg",
+  "label": "Button Hover Background",
+  "default": "#ffffff"
+},
+{
+  "type": "color",
+  "id": "button_hover_text",
+  "label": "Button Hover Text",
+  "default": "#111111"
+},{
+  "type": "select",
+  "id": "button_decoration",
+  "label": "Text Decoration",
+  "default": "none",
+  "options": [
+    {
+      "value": "none",
+      "label": "None"
+    },
+    {
+      "value": "underline",
+      "label": "Underline"
+    },
+    {
+      "value": "overline",
+      "label": "Overline"
+    },
+    {
+      "value": "line-through",
+      "label": "Line Through"
+    }
+  ]
+},{
+  "type": "range",
+  "id": "button_font_size",
+  "label": "Button Font Size",
+  "min": 10,
+  "max": 30,
+  "step": 1,
+  "unit": "px",
+  "default": 14
+}, {
         "type": "range",
         "id": "content_gap",
         "label": "Content Gap",

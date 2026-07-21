@@ -11,6 +11,7 @@
   "sections": {
     "banner": {
       "type": "main-collection-banner",
+      "disabled": true,
       "settings": {
         "show_collection_description": true,
         "show_collection_image": false,
@@ -19,6 +20,7 @@
     },
     "product-grid": {
       "type": "main-collection-product-grid",
+      "disabled": true,
       "settings": {
         "products_per_page": 16,
         "columns_desktop": 3,
@@ -34,10 +36,78 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "collection_list_rL4GNX": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_t6H6Gx": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "skin-lightning"
+          }
+        },
+        "featured_collection_zjpwTM": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "best-sellers"
+          }
+        },
+        "featured_collection_XQ8emB": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "face-serums"
+          }
+        },
+        "featured_collection_UzqfG3": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "ampules"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_t6H6Gx",
+        "featured_collection_zjpwTM",
+        "featured_collection_XQ8emB",
+        "featured_collection_UzqfG3"
+      ],
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "title": "Collections",
+        "heading_size": "h1",
+        "image_ratio": "portrait",
+        "columns_desktop": 4,
+        "color_scheme": "background-1",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured_blog_rd4aKy": {
+      "type": "featured-blog",
+      "name": "t:sections.featured-blog.presets.name",
+      "settings": {
+        "heading": "Blog posts",
+        "heading_size": "h1",
+        "blog": "news",
+        "post_limit": 3,
+        "columns_desktop": 3,
+        "color_scheme": "background-1",
+        "show_image": true,
+        "show_date": true,
+        "show_author": false,
+        "show_view_all": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
     "banner",
-    "product-grid"
+    "product-grid",
+    "collection_list_rL4GNX",
+    "featured_blog_rd4aKy"
   ]
 }

@@ -32,6 +32,30 @@
     },
     "header": {
       "type": "header",
+      "blocks": {
+        "hero_block_xreRxW": {
+          "type": "hero-block",
+          "settings": {
+            "all_background_Image": "shopify://shop_images/hero_banner_2.webp",
+            "collection_background_Image": "shopify://shop_images/Group_101.png",
+            "padding_top": 80,
+            "padding_bottom": 80,
+            "hero_heading": "<h1>Any Design, Our Promise.</h1>",
+            "heading_margin_bottom": 80,
+            "hero_description": "",
+            "description_margin_bottom": 80,
+            "left_button_text": "Speak With A Designer",
+            "left_button_link": "",
+            "right_button_text": "Email A Diamond Expert",
+            "right_button_link": "",
+            "padding_left": 80,
+            "padding_right": 80
+          }
+        }
+      },
+      "block_order": [
+        "hero_block_xreRxW"
+      ],
       "custom_css": [
         ".header__heading-link .h2 {font-size: 16px;}"
       ],
@@ -39,7 +63,7 @@
         "logo_position": "top-center",
         "menu": "main-menu",
         "menu_type_desktop": "dropdown",
-        "sticky_header_type": "always",
+        "sticky_header_type": "none",
         "show_line_separator": true,
         "color_scheme": "background-1",
         "enable_country_selector": false,

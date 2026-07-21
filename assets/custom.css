@@ -1,3 +1,7 @@
+:root{
+    --card-headings-color:rgba(131, 131, 131, 1);
+}
+
 .custom-hero {
     position: relative;
     width: 100%;
@@ -168,4 +172,31 @@
 .custom-info-section .page-width .hero-buttons a{
     color: white;
     text-decoration-color: inherit;
+}
+.collection-list-wrapper-parent {
+  position: relative;
+}
+
+.custom-section-divider {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: var(--divider-offset);
+  z-index: var(--divider-z);
+}
+
+.custom-section-divider img {
+  display: block;
+  width: var(--divider-width);
+  height: var(--divider-height);
+  object-fit: contain;
+}
+/* custom-card__heading card__heading */
+.custom-card__heading.card__heading{
+font-weight: 500;
+font-size: 24px;
+line-height: 100%;
+letter-spacing: 0%;
+text-align: center;
+color: var(--card-headings-color);
 }
