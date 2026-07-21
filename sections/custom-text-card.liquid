@@ -1,0 +1,398 @@
+<link rel="stylesheet" href="{{ 'custom.css' | asset_url }}">
+{% style %}
+  .create-banner {
+    position: relative;
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    {% if section.settings.background_image != blank %}
+      background-image: url('{{ section.settings.background_image | image_url: width: 2000 }}');
+    {% endif %}
+  }
+
+  .create-banner__wrapper {
+    position: relative;
+    height: {{ section.settings.desktop_height }}px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .create-banner__overlay {
+    position: absolute;
+    inset: 0;
+    background: {{ section.settings.overlay_color }};
+    opacity: {{ section.settings.overlay_opacity | times: 0.01 }};
+  }
+
+  .create-banner__card {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: {{ section.settings.card_width }}px;
+    background: {{ section.settings.card_background }};
+    padding: 14px;
+    border-radius: {{ section.settings.card_border_radius }}px;
+    text-align: {{ section.settings.text_alignment }};
+
+    {% if section.settings.card_shadow %}
+      box-shadow: 0 10px 25px rgba(0, 0, 0, .12);
+    {% endif %}
+  }
+
+  .create-banner__inner {
+    border: {{ section.settings.card_border_width }}
+    px solid{{ section.settings.card_border_color }};
+    padding: clamp(20px, 3vw, 40px);
+  }
+  .create-banner__heading h1,
+  .create-banner__heading h2,
+  .create-banner__heading h3 {
+    margin: 0 0 20px;
+    color: {{ section.settings.heading_color }};
+    font-size: {{ section.settings.heading_size }}px;
+    line-height: 1.1;
+  }
+
+  .create-banner__tagline {
+    margin: 0 0 12px;
+    color: {{ section.settings.tagline_color }};
+    font-size: {{ section.settings.tagline_size }}px;
+  }
+
+  .create-banner__description {
+    margin: 0 0 25px;
+    color: {{ section.settings.description_color }};
+    font-size: {{ section.settings.description_size }}px;
+  }
+
+  .create-banner__button {
+    background: none;
+    border: none;
+    padding: 0;
+    color: {{ section.settings.button_text_color }};
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+    cursor: pointer;
+  }
+  .create-banner__button:hover {
+    opacity: .85;
+  }
+
+  @media(max-width: 749px) {
+
+    .create-banner__wrapper {
+      height: {{ section.settings.mobile_height }}px;
+
+      {% if section.settings.mobile_background_image != blank %}
+        background-image: url('{{ section.settings.mobile_background_image | image_url: width:1000 }}');
+      {% endif %}
+    }
+
+    .create-banner__card {
+      max-width: 90%;
+      padding: 25px;
+    }
+
+    .create-banner__heading h1,
+    .create-banner__heading h2,
+    .create-banner__heading h3 {
+      font-size: calc({{ section.settings.heading_size }}px * 0.7);
+    }
+
+    .create-banner__tagline {
+      font-size: calc({{ section.settings.tagline_size }}px * 0.9);
+    }
+
+    .create-banner__description {
+      font-size: calc({{ section.settings.description_size }}px * 0.9);
+    }
+  }
+{% endstyle %}
+
+<div class="create-banner">
+  {% comment %} <div class="page-width"> {% endcomment %}
+  <div class="create-banner__wrapper">
+    {% comment %} <div class="create-banner__overlay"></div> {% endcomment %}
+    <div class="create-banner__card">
+      <div class="create-banner__inner">
+
+        {% if section.settings.heading != blank %}
+          <div class="create-banner__heading">
+            {{ section.settings.heading }}
+          </div>
+        {% endif %}
+
+        {% if section.settings.tagline != blank %}
+          <div class="create-banner__tagline">
+            {{ section.settings.tagline }}
+          </div>
+        {% endif %}
+
+        {% if section.settings.description != blank %}
+          <div class="create-banner__description">
+            {{ section.settings.description }}
+          </div>
+        {% endif %}
+
+        {% if section.settings.button_label != blank %}
+          <a class="create-banner__button" href="{{ section.settings.button_link }}">
+            {{ section.settings.button_label }}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+
+  </div>
+{% comment %} </div> {% endcomment %}
+</div>
+{% schema %}
+  {
+    "name": "Create Banner",
+    "tag": "section",
+    "class": "create-banner-section",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Background"
+      },
+      {
+        "type": "image_picker",
+        "id": "background_image",
+        "label": "Background Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "mobile_background_image",
+        "label": "Mobile Background Image"
+      },
+      {
+        "type": "range",
+        "id": "desktop_height",
+        "label": "Desktop Height",
+        "min": 300,
+        "max": 900,
+        "step": 10,
+        "default": 550,
+        "unit": "px"
+      }, {
+        "type": "range",
+        "id": "mobile_height",
+        "label": "Mobile Height",
+        "min": 250,
+        "max": 700,
+        "step": 10,
+        "default": 450,
+        "unit": "px"
+      }, {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Padding Top",
+        "min": 0,
+        "max": 150,
+        "step": 5,
+        "default": 40,
+        "unit": "px"
+      }, {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Padding Bottom",
+        "min": 0,
+        "max": 150,
+        "step": 5,
+        "default": 40,
+        "unit": "px"
+      }, {
+        "type": "color",
+        "id": "overlay_color",
+        "label": "Overlay Color",
+        "default": "#000000"
+      }, {
+        "type": "range",
+        "id": "overlay_opacity",
+        "label": "Overlay Opacity",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "default": 0,
+        "unit": "%"
+      }, {
+        "type": "header",
+        "content": "Card"
+      }, {
+        "type": "range",
+        "id": "card_width",
+        "label": "Card Width",
+        "min": 300,
+        "max": 900,
+        "step": 10,
+        "default": 460,
+        "unit": "px"
+      }, {
+        "type": "range",
+        "id": "card_padding",
+        "label": "Card Padding",
+        "min": 20,
+        "max": 80,
+        "step": 2,
+        "default": 40,
+        "unit": "px"
+      }, {
+        "type": "color",
+        "id": "card_background",
+        "label": "Card Background",
+        "default": "#ffffff"
+      }, {
+        "type": "range",
+        "id": "card_border_width",
+        "label": "Border Width",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "default": 1,
+        "unit": "px"
+      }, {
+        "type": "color",
+        "id": "card_border_color",
+        "label": "Border Color",
+        "default": "#8fd8ff"
+      }, {
+        "type": "range",
+        "id": "card_border_radius",
+        "label": "Border Radius",
+        "min": 0,
+        "max": 40,
+        "step": 2,
+        "default": 0,
+        "unit": "px"
+      }, {
+        "type": "checkbox",
+        "id": "card_shadow",
+        "label": "Enable Card Shadow",
+        "default": true
+      }, {
+        "type": "select",
+        "id": "text_alignment",
+        "label": "Text Alignment",
+        "default": "center",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          }, {
+            "value": "center",
+            "label": "Center"
+          }, {
+            "value": "right",
+            "label": "Right"
+          }
+        ]
+      }, {
+        "type": "header",
+        "content": "Heading"
+      }, {
+        "type": "richtext",
+        "id": "heading",
+        "label": "Heading",
+        "default": "<h2>CREATE</h2>"
+      }, {
+        "type": "range",
+        "id": "heading_size",
+        "label": "Heading Size",
+        "min": 24,
+        "max": 80,
+        "step": 2,
+        "default": 54,
+        "unit": "px"
+      }, {
+        "type": "color",
+        "id": "heading_color",
+        "label": "Heading Color",
+        "default": "#111111"
+      }, {
+        "type": "header",
+        "content": "Tagline"
+      }, {
+        "type": "text",
+        "id": "tagline",
+        "label": "Tagline",
+        "default": "With A Third Generation Diamond Dealer."
+      }, {
+        "type": "range",
+        "id": "tagline_size",
+        "label": "Tagline Size",
+        "min": 12,
+        "max": 30,
+        "step": 1,
+        "default": 18,
+        "unit": "px"
+      }, {
+        "type": "color",
+        "id": "tagline_color",
+        "label": "Tagline Color",
+        "default": "#222222"
+      }, {
+        "type": "header",
+        "content": "Description"
+      }, {
+        "type": "textarea",
+        "id": "description",
+        "label": "Description",
+        "default": "It all starts with an email."
+      }, {
+        "type": "range",
+        "id": "description_size",
+        "label": "Description Size",
+        "min": 10,
+        "max": 24,
+        "step": 1,
+        "default": 14,
+        "unit": "px"
+      }, {
+        "type": "color",
+        "id": "description_color",
+        "label": "Description Color",
+        "default": "#555555"
+      }, {
+        "type": "header",
+        "content": "Button"
+      }, {
+        "type": "text",
+        "id": "button_label",
+        "label": "Button Label",
+        "default": "Email Ran"
+      }, {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button Link"
+      }, {
+        "type": "color",
+        "id": "button_background",
+        "label": "Button Background",
+        "default": "#ffffff"
+      }, {
+        "type": "color",
+        "id": "button_text_color",
+        "label": "Button Text Color",
+        "default": "#111111"
+      }, {
+        "type": "range",
+        "id": "button_radius",
+        "label": "Button Radius",
+        "min": 0,
+        "max": 30,
+        "step": 2,
+        "default": 0,
+        "unit": "px"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Card Banner"
+      }
+    ]
+  }
+{% endschema %}

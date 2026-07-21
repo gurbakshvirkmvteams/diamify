@@ -1,0 +1,177 @@
+{{ 'custom.css' | asset_url | stylesheet_tag }}
+{% if section.settings.my_custom_image != blank %}
+  <div class="custom-info-section layout--{{ section.settings.layout }}" style="
+    background: {{ section.settings.background_color }};
+    padding-top:{{ section.settings.padding_top }}px;
+    padding-bottom:{{ section.settings.padding_bottom }}px;
+    min-height:{{ section.settings.section_min_height }}px;
+    ">
+    <div class="page-width">
+      <div class="custom-info-wrapper" style="gap:{{ section.settings.content_gap }}px">
+        {% if section.settings.layout == 'image_first' %}
+          <div class="custom-info-image">
+            {% if section.settings.my_custom_image %}
+              {{
+                section.settings.my_custom_image | image_url: width: 1200 | image_tag: loading: 'lazy', class: 'custom-image'
+              }}
+            {% endif %}
+          </div>
+          <div class="custom-info-content" style="max-width:{{ section.settings.banner_text_width }}px;">
+            {{ section.settings.heading }}
+            {{ section.settings.description }}
+            <div class="custom-info-buttons">
+              {% if section.settings.left_button_text != blank %}
+                <a href="{{ section.settings.left_button_link }}" class="button">
+                  {{ section.settings.left_button_text }}
+                </a>
+              {% endif %}
+
+              {% if section.settings.right_button_text != blank %}
+                <a href="{{ section.settings.right_button_link }}" class="button button--secondary">
+                  {{ section.settings.right_button_text }}
+                </a>
+              {% endif %}
+            </div>
+          </div>
+        {% else %}
+          <div class="custom-info-content" style="max-width:{{ section.settings.banner_text_width }}px;">
+            {{ section.settings.heading }}
+            {{ section.settings.description }}
+
+          </div>
+          <div class="custom-info-image">
+            {% if section.settings.my_custom_image %}
+              {{
+                section.settings.my_custom_image | image_url: width: 1200 | image_tag: loading: 'lazy', class: 'custom-imag e'
+              }}
+            {% endif %}
+          </div>
+        {% endif %}
+
+      </div>
+      <div class="hero-buttons">
+
+        {% if section.settings.left_button_text != blank %}
+          <a href="{{ section.settings.left_button_link }}" class="hero-btn">
+            {{ section.settings.left_button_text }}
+          </a>
+        {% endif %}
+
+        {% if section.settings.right_button_text != blank %}
+          <a href="{{ section.settings.right_button_link }}" class="hero-btn">
+            {{ section.settings.right_button_text }}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endif %}
+{% schema %}
+  {
+    "name": "Custom Image",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "my_custom_image",
+        "label": "Choose Image"
+      },
+      {
+        "label": "Heading",
+        "type": "richtext",
+        "id": "heading"
+      },
+      {
+        "label": "Description",
+        "type": "richtext",
+        "id": "description"
+      },
+      {
+        "type": "text",
+        "id": "left_button_text",
+        "label": "Button Label"
+      }, {
+        "type": "url",
+        "id": "left_button_link",
+        "label": "Button Link"
+      }, {
+        "type": "text",
+        "id": "right_button_text",
+        "label": "Right Button Label"
+      }, {
+        "type": "url",
+        "id": "right_button_link",
+        "label": "Button Link"
+      }, {
+        "type": "range",
+        "id": "banner_text_width",
+        "label": "Text Banner Width",
+        "min": 0,
+        "max": 600,
+        "step": 6,
+        "unit": "px",
+        "default": 558
+      }, {
+        "type": "range",
+        "id": "content_gap",
+        "label": "Content Gap",
+        "min": 20,
+        "max": 150,
+        "step": 5,
+        "unit": "px",
+        "default": 80
+      }, {
+        "type": "select",
+        "id": "layout",
+        "options": [
+          {
+            "value": "image_first",
+            "label": "Image First"
+          }, {
+            "value": "text_first",
+            "label": "Text First"
+          }
+        ],
+        "default": "image_first",
+        "label": "Layout",
+        "info": "Choose the layout for the banner"
+      }, {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background Color",
+        "default": "#111111"
+      }, {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Padding Top",
+        "min": 0,
+        "max": 150,
+        "step": 5,
+        "unit": "px",
+        "default": 50
+      }, {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Padding Bottom",
+        "min": 0,
+        "max": 150,
+        "step": 5,
+        "unit": "px",
+        "default": 50
+      }, {
+        "type": "range",
+        "id": "section_min_height",
+        "label": "Section Minimum Height",
+        "min": 100,
+        "max": 600,
+        "step": 25,
+        "unit": "px",
+        "default": 200
+      }
+    ],
+    "presets": [
+      {
+        "name": "Custom Banner"
+      }
+    ]
+  }
+{% endschema %}
