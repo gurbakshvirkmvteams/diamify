@@ -10,3 +10,15 @@
 -- Added blogs section
 -- Created user adjustable newsletter section
 -- added section divider
+
+
+# Today's update:
+
+# Diamify
+
+-- Adjusted section divider customizeable css
+-- Changed Ui of collection and product cards to use custom css instead Shopify Dawn theme's Styling
+-- Created a section with hero text description and buttons with merchant customizeable layout to adjust text image positioning etc
+-- Added custom banner section in bestsellers page 
+-- Added Basic products to test collections section
+-- Created Product Collection section with Collection Promo banner and cards with own css that can be fully adjusted by user

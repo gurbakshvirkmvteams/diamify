@@ -1,7 +1,145 @@
 {{ 'custom.css' | asset_url | stylesheet_tag }}
-<div class="custom-hero-section" style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;">
-  <div class="custom-hero-content">
-    <div class="hero-text">
+{% style %}
+  .custom-hero-section {
+    width: 100%;
+    background: #fff;
+  }
+
+  .custom-hero-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 80px;
+    padding: 0 40px;
+    height: 100%;
+  }
+
+  .hero-image,
+  .hero-text {
+    flex: 1;
+  }
+
+  .hero-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  .hero-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .hero-text h1 {
+    font-size: 72px;
+    line-height: 0.95;
+    font-weight: 400;
+    margin: 0 0 20px;
+  }
+  .hero-text h1 {
+    color: var(--heading-color);
+  }
+  .hero-text p {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 30px;
+  }
+  .hero-text p {
+    color: var(--text-color);
+  }
+  .hero-button {
+    display: inline-block;
+    width: fit-content;
+    text-decoration: none;
+    color: var(--button-color);
+    border-bottom: 1px solid var(--button-color);
+    padding-bottom: 4px;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .hero-button:hover {
+    opacity: .7;
+  }
+  .hero-image {
+    overflow: hidden;
+  }
+
+  .hero-img {
+    width: 100%;
+    height: 100%;
+  }
+  .image-right .custom-hero-content {
+    flex-direction: row-reverse;
+  }
+
+  .image-left .custom-hero-content {
+    flex-direction: row;
+  }
+
+  @media screen and (max-width: 768px) {
+    .custom-hero-content {
+      flex-direction: column;
+      text-align: center;
+      gap: 40px;
+      padding: 0 20px;
+    }
+
+    .hero-text {
+      order: 2;
+      align-items: center;
+    }
+
+    .hero-image {
+      order: 1;
+    }
+
+    .hero-text h1 {
+      font-size: 44px;
+    }
+
+    .hero-text p {
+      font-size: 16px;
+    }
+
+    .hero-image img {
+      max-width: 320px;
+    }
+  }
+  @media(max-width: 768px) {
+
+    .custom-hero-content {
+      flex-direction: column !important;
+    }
+
+    .hero-text,
+    .hero-image {
+      width: 100% !important;
+      min-height: auto !important;
+    }
+  }
+{% endstyle %}
+<div class="custom-hero-section  {% if section.settings.image_position == 'right' %}image-right{% else %}image-left{% endif %}" style="
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
+        background: {{ section.settings.background_color }};
+        height:{{ section.settings.section_height }}px;
+        --heading-color: {{ section.settings.heading_color }};
+        --text-color: {{ section.settings.text_color }};
+        --button-color: {{ section.settings.button_color }};
+        ">
+
+  <div
+    class="custom-hero-content page-width"
+    {% if section.settings.show_divider %}
+    style="border-right:1px solid {{ section.settings.divider_color }};"
+    {% endif %}>
+    <div class="hero-text" style="
+              width:{{ section.settings.text_width }}%;
+              ">
       <h1>{{ section.settings.title }}</h1>
 
       <p>{{ section.settings.subtitle }}</p>
@@ -11,12 +149,13 @@
       </a>
     </div>
 
-    <div class="hero-image">
+    <div class="hero-image" style="
+              width:{{ section.settings.image_width }}%;
+               height:100%;
+            ">
       {% if section.settings.hero_image != blank %}
         {{
-          section.settings.hero_image
-          | image_url: width: 800
-          | image_tag: loading: 'lazy'
+          section.settings.hero_image | image_url: width: 1200 | image_tag: loading: 'lazy', widths: '400,600,800,1000,1200', class: 'hero-img'
         }}
       {% endif %}
     </div>
@@ -26,51 +165,121 @@
   {
     "name": "Hero Section",
     "disabled_on": {
-    "groups": ["header", "footer"]
-  },    
+      "groups": ["header", "footer"]
+    },
     "settings": [
       {
         "label": "Title",
         "type": "richtext",
         "id": "title"
-      }, {
+      },
+      {
         "label": "Subtitle",
         "type": "text",
         "id": "subtitle"
-      }, {
+      },
+      {
         "label": "Button Text",
         "type": "text",
         "id": "button_text"
-      }, {
+      },
+      {
         "label": "Button Link",
         "type": "url",
         "id": "button_link"
-      },
-      {
-      "type": "image_picker",
-      "id": "hero_image",
-      "label": "Hero Image"
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "label": "Padding Top",
-      "min": 0,
-      "max": 150,
-      "step": 5,
-      "unit": "px",
-      "default": 50
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "label": "Padding Bottom",
-      "min": 0,
-      "max": 150,
-      "step": 5,
-      "unit": "px",
-      "default": 50
-    }
+      }, {
+        "type": "image_picker",
+        "id": "hero_image",
+        "label": "Hero Image"
+      }, {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Padding Top",
+        "min": 0,
+        "max": 150,
+        "step": 5,
+        "unit": "px",
+        "default": 50
+      }, {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Padding Bottom",
+        "min": 0,
+        "max": 150,
+        "step": 5,
+        "unit": "px",
+        "default": 50
+      }, {
+        "type": "select",
+        "id": "image_position",
+        "label": "Image Position",
+        "default": "left",
+        "options": [
+          {
+            "value": "left",
+            "label": "Image Left"
+          }, {
+            "value": "right",
+            "label": "Image Right"
+          }
+        ]
+      }, {
+        "type": "checkbox",
+        "id": "show_divider",
+        "label": "Show Divider",
+        "default": true
+      }, {
+        "type": "color",
+        "id": "divider_color",
+        "label": "Divider Color",
+        "default": "#e5e5e5"
+      }, {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background Color",
+        "default": "#ffffff"
+      }, {
+        "type": "color",
+        "id": "heading_color",
+        "label": "Heading Color",
+        "default": "#111111"
+      }, {
+        "type": "color",
+        "id": "text_color",
+        "label": "Subtitle Color",
+        "default": "#666666"
+      }, {
+        "type": "color",
+        "id": "button_color",
+        "label": "Button Color",
+        "default": "#111111"
+      }, {
+        "type": "range",
+        "id": "image_width",
+        "label": "Image Width (%)",
+        "min": 20,
+        "max": 100,
+        "step": 5,
+        "default": 50
+      }, {
+        "type": "range",
+        "id": "text_width",
+        "label": "Text Width (%)",
+        "min": 20,
+        "max": 100,
+        "step": 5,
+        "default": 50
+      }, {
+        "type": "range",
+        "id": "section_height",
+        "label": "Section Height",
+        "min": 200,
+        "max": 1400,
+        "step": 20,
+        "unit": "px",
+        "default": 560
+      }
+
     ],
     "presets": [
       {
