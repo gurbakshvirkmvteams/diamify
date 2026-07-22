@@ -51,6 +51,25 @@
   --divider-z: {{ section.settings.divider_z_index }};
   position: relative;
 }
+.color-{{ section.settings.color_scheme }} {
+  position: relative;
+}
+
+.custom-section-divider {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: {{ section.settings.divider_overlap }}px;
+  z-index: {{ section.settings.divider_z_index }};
+}
+
+.custom-section-divider img {
+  width: {{ section.settings.divider_width }}px;
+  height: {{ section.settings.divider_height }}px;
+  display: block;
+  object-fit: contain;
+}
+
 {%- endstyle -%}
 
 {%- liquid
@@ -61,7 +80,7 @@
   endif
 -%}
 
-<div class="color-{{ section.settings.color_scheme }} gradient">
+<div class="section-{{ section.id }} color-{{ section.settings.color_scheme }} gradient">
   {% if section.settings.show_divider and section.settings.divider_image != blank %}
   <div class="custom-section-divider">
     {{

@@ -170,10 +170,16 @@
       "settings": {
         "title": "<strong>Collections</strong>",
         "heading_size": "h0",
-        "collection_description": "<p>We’ve launched our collection of rings, earrings, bracelets, and necklaces</p><p>inspired and designed with our community.</p>",
+        "collection_description": "<h4>We’ve launched our collection of rings, earrings, bracelets, and necklaces</h4><h4>inspired and designed with our community.</h4>",
         "button_text": "Discover Our Collection",
         "button_link": "shopify://collections/rings",
-        "image_ratio": "portrait",
+        "image_ratio": "square",
+        "show_divider": true,
+        "divider_image": "shopify://shop_images/Group_35.svg",
+        "divider_width": 20,
+        "divider_height": 20,
+        "divider_overlap": -200,
+        "divider_z_index": 10,
         "columns_desktop": 4,
         "color_scheme": "background-1",
         "show_view_all": false,
@@ -181,6 +187,64 @@
         "swipe_on_mobile": false,
         "padding_top": 36,
         "padding_bottom": 36
+      }
+    },
+    "custom_image_text_Vyt7Wk": {
+      "type": "custom-image-text",
+      "name": "Image Text Banner",
+      "settings": {
+        "my_custom_image": "shopify://shop_images/unsplash_hXhMzWysB8s.png",
+        "heading": "<h1>We Are Friendly</h1>",
+        "description": "<p>Excellence and value are the two cornerstones of our service.</p><p><br/>We dedicate our experience and time to give individual attention to our customers. If you are looking for inspiration or advice, we will help you make an informed decision.</p>",
+        "image_height": 500,
+        "text_alignment": "left",
+        "left_button_text": "",
+        "left_button_link": "",
+        "right_button_text": "",
+        "right_button_link": "",
+        "banner_text_width": 400,
+        "button_bg": "#111111",
+        "button_text": "#ffffff",
+        "button_border": "#ffffff",
+        "button_hover_bg": "#ffffff",
+        "button_hover_text": "#111111",
+        "button_decoration": "none",
+        "button_font_size": 14,
+        "content_gap": 80,
+        "layout": "image_first",
+        "background_color": "#111111",
+        "padding_top": 105,
+        "padding_bottom": 0,
+        "section_min_height": 100
+      }
+    },
+    "custom_image_text_McqCM4": {
+      "type": "custom-image-text",
+      "name": "Image Text Banner",
+      "settings": {
+        "my_custom_image": "shopify://shop_images/88e05ddf98749a702e01729bfd931232bf1c784a.png",
+        "heading": "<h1>We Are Reliable</h1>",
+        "description": "<p>At Diamify, diamonds are our métier. </p><p>Custom made to perfection.</p><p><br/>Diamify understands that finding your exact request, whether it be a loose diamond or jewelry, it can be a difficult task. Rest assured that our associates will be with you every step of the way to make sure that you get exactly what you want at a price you can afford.</p>",
+        "image_height": 500,
+        "text_alignment": "right",
+        "left_button_text": "Speak With A Designer",
+        "left_button_link": "",
+        "right_button_text": "Speak With A Diamond Expert",
+        "right_button_link": "",
+        "banner_text_width": 400,
+        "button_bg": "#111111",
+        "button_text": "#ffffff",
+        "button_border": "#ffffff",
+        "button_hover_bg": "#ffffff",
+        "button_hover_text": "#111111",
+        "button_decoration": "none",
+        "button_font_size": 14,
+        "content_gap": 80,
+        "layout": "text_first",
+        "background_color": "#111111",
+        "padding_top": 0,
+        "padding_bottom": 90,
+        "section_min_height": 100
       }
     },
     "featured_blog_wTqtfW": {
@@ -199,46 +263,6 @@
         "show_view_all": true,
         "padding_top": 36,
         "padding_bottom": 36
-      }
-    },
-    "custom_image_text_Vyt7Wk": {
-      "type": "custom-image-text",
-      "name": "Image Text Banner",
-      "settings": {
-        "my_custom_image": "shopify://shop_images/unsplash_hXhMzWysB8s.png",
-        "heading": "<h1>We Are Friendly</h1>",
-        "description": "<p>Excellence and value are the two cornerstones of our service.</p><p><br/>We dedicate our experience and time to give individual attention to our customers. If you are looking for inspiration or advice, we will help you make an informed decision.</p>",
-        "left_button_text": "",
-        "left_button_link": "",
-        "right_button_text": "",
-        "right_button_link": "",
-        "banner_text_width": 444,
-        "content_gap": 80,
-        "layout": "image_first",
-        "background_color": "#111111",
-        "padding_top": 105,
-        "padding_bottom": 0,
-        "section_min_height": 100
-      }
-    },
-    "custom_image_text_McqCM4": {
-      "type": "custom-image-text",
-      "name": "Image Text Banner",
-      "settings": {
-        "my_custom_image": "shopify://shop_images/unsplash_hXhMzWysB8s.png",
-        "heading": "<h1>We Are Reliable</h1>",
-        "description": "<p>At Diamify, diamonds are our métier. </p><p>Custom made to perfection.</p><p><br/>Diamify understands that finding your exact request, whether it be a loose diamond or jewelry, it can be a difficult task. Rest assured that our associates will be with you every step of the way to make sure that you get exactly what you want at a price you can afford.</p>",
-        "left_button_text": "Speak With A Designer",
-        "left_button_link": "",
-        "right_button_text": "Speak With A Diamond Expert",
-        "right_button_link": "",
-        "banner_text_width": 420,
-        "content_gap": 80,
-        "layout": "text_first",
-        "background_color": "#111111",
-        "padding_top": 0,
-        "padding_bottom": 90,
-        "section_min_height": 100
       }
     },
     "custom_text_card_wn4eB7": {
@@ -283,9 +307,9 @@
     "featured_collection",
     "f1552b18-6017-4231-810d-74e61da22c37",
     "38cdf60f-e431-43b5-aac3-7e6215447d67",
-    "featured_blog_wTqtfW",
     "custom_image_text_Vyt7Wk",
     "custom_image_text_McqCM4",
+    "featured_blog_wTqtfW",
     "custom_text_card_wn4eB7"
   ]
 }
