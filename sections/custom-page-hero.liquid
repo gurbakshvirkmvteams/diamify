@@ -1,0 +1,217 @@
+<link rel="stylesheet" href="{{ 'custom.css' | asset_url }}">
+{% style %}
+    .custom-hero{
+    min-height:720px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+
+    position:relative;
+}
+{% endstyle %}
+{% assign show_hero = false %}
+ {% if request.page_type == 'index' %}
+  {% assign show_hero = true %}
+{% endif %}
+
+{% if request.page_type == 'collection' %}
+  {% assign show_hero = true %}
+{% endif %}
+
+{% if show_hero %}
+{% for block in section.blocks %}
+  {% if block.type == 'hero-block' %}
+     {% assign hero_image = blank %}    
+
+    {% if request.page_type == 'collection' %}
+      {% assign hero_image = block.settings.collection_background_Image %}
+    {% elsif request.page_type == 'index' %}
+      {% assign hero_image = block.settings.home_background_Image %}
+    {% endif %}
+   <section
+        class="custom-hero"
+        {% if hero_image != blank %}
+            style="background-image:url('{{ hero_image | image_url: width: 2400 }}');"
+        {% endif %}
+        >
+      {% comment %} <div class="custom-hero__bg">
+        {% if request.page_type == 'collection' and block.settings.collection_background_Image %}
+          {{
+            block.settings.collection_background_Image
+            | image_url: width: 2200
+            | image_tag: class: 'hero-bg-image'
+          }}
+        {% else %}
+          {{
+            block.settings.all_background_Image
+            | image_url: width: 2200
+            | image_tag: class: 'hero-bg-image'
+          }}
+        {% endif %}
+      </div> {% endcomment %}
+      <div
+        class="custom-hero__content"
+        style="
+          padding-top:{{ block.settings.padding_top }}px;
+          padding-bottom:{{ block.settings.padding_bottom }}px;
+          padding-left:{{ block.settings.padding_left }}px;
+          padding-right:{{ block.settings.padding_right }}px;
+        ">
+        {% if block.settings.hero_heading != blank %}
+          <div
+            class="hero-heading"
+            style="margin-bottom:{{ block.settings.heading_margin_bottom }}px;"
+          >
+            {{ block.settings.hero_heading }}
+          </div>
+        {% endif %}
+        {% if block.settings.hero_description != blank %}
+          <div
+            class="hero-description"
+            style="margin-bottom:{{ block.settings.description_margin_bottom }}px;"
+          >
+            {{ block.settings.hero_description }}
+          </div>
+        {% endif %}
+        <div class="hero-buttons">
+          {% if block.settings.left_button_text != blank %}
+            <a href="{{ block.settings.left_button_link }}" class="hero-btn">
+              {{ block.settings.left_button_text }}
+            </a>
+          {% endif %}
+          {% if block.settings.right_button_text != blank %}
+            <a href="{{ block.settings.right_button_link }}" class="hero-btn">
+              {{ block.settings.right_button_text }}
+            </a>
+          {% endif %}
+        </div>
+      </div>
+    </section>
+  {% endif %}
+{% endfor %}
+{% endif %}
+{% schema %}
+{
+    "name": "Custom Page Hero",
+    "settings": [
+        
+        ],
+        "blocks": [
+    {
+      "type": "@app"
+    },
+     {
+      "type": "hero-block",
+        "name":"Hero Block",
+        "settings": [
+        {
+          "type": "image_picker",
+          "id": "home_background_Image",
+          "label": "Home background image"
+        },
+        {
+          "type": "image_picker",
+         "id":"collection_background_Image",
+            "label":"Collection Page Background Image"  
+        },{
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },{
+          "type":"richtext",
+          "id":"hero_heading",
+          "label":"Add section Heading"
+        },{
+          "type": "range",
+      "id": "heading_margin_bottom",
+      "label": "Heading Margin Bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+        },
+        {
+          "type":"richtext",
+          "id":"hero_description",
+          "label":"Add section Description"
+        },{
+          "type": "range",
+      "id": "description_margin_bottom",
+      "label": "Description Margin Bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+        },
+        {
+  "type": "text",
+  "id": "left_button_text",
+  "label": "Button Label"
+},
+{
+  "type": "url",
+  "id": "left_button_link",
+  "label": "Button Link"
+},
+{
+  "type": "text",
+  "id": "right_button_text",  
+  "label": "Right Button Label"
+},
+{
+  "type": "url",
+  "id": "right_button_link",
+  "label": "Button Link"
+},
+{
+      "type": "range",
+      "id": "padding_left",
+      "label": "Padding Left",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_right",
+      "label": "Padding Right",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    }
+        ]
+      }
+  ],
+  "presets": [
+    {
+        "name": "Custom Page Hero"
+    }
+  ]
+}
+{% endschema %}
