@@ -204,8 +204,8 @@
         "right_button_text": "",
         "right_button_link": "",
         "banner_text_width": 400,
-        "heading_color": "#FFFFFF",
-        "description_color": "#FFFFFF",
+        "heading_color": "#ffffff",
+        "description_color": "#ffffff",
         "button_bg": "#111111",
         "button_text": "#ffffff",
         "button_border": "#ffffff",
@@ -237,9 +237,9 @@
         "right_button_text": "Speak With A Diamond Expert",
         "right_button_link": "",
         "banner_text_width": 400,
-        "heading_color": "#FFFFFF",
-        "description_color": "#FFFFFF",
-        "button_bg": "#FF0000",
+        "heading_color": "#ffffff",
+        "description_color": "#ffffff",
+        "button_bg": "#ff0000",
         "button_text": "#ffffff",
         "button_border": "#ffffff",
         "button_hover_bg": "#ffffff",
@@ -286,6 +286,29 @@
         "padding_top": 140,
         "padding_bottom": 60,
         "section_min_height": 200
+      }
+    },
+    "custom_hero_39BmNA": {
+      "type": "custom-hero",
+      "name": "Hero Section",
+      "settings": {
+        "title": "<h1>Eternity Bands</h1>",
+        "subtitle": "It’s okay to be a little obsessed with eternity bands.",
+        "button_text": "Shop Now",
+        "button_link": "",
+        "hero_image": "shopify://shop_images/efde7d2889e452b4b4fb9d6c61ea7f18e4bb93e5.png",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "image_position": "right",
+        "show_divider": true,
+        "divider_color": "rgba(0,0,0,0)",
+        "background_color": "#f8f8f8",
+        "heading_color": "#111111",
+        "text_color": "#666666",
+        "button_color": "#111111",
+        "image_width": 50,
+        "text_width": 20,
+        "section_height": 460
       }
     },
     "featured_blog_wTqtfW": {
@@ -351,6 +374,7 @@
     "custom_image_text_Vyt7Wk",
     "custom_image_text_McqCM4",
     "custom_image_text_gpLHci",
+    "custom_hero_39BmNA",
     "featured_blog_wTqtfW",
     "custom_text_card_wn4eB7"
   ]

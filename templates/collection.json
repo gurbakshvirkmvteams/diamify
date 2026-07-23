@@ -71,11 +71,20 @@
         "featured_collection_XQ8emB",
         "featured_collection_UzqfG3"
       ],
+      "disabled": true,
       "name": "t:sections.collection-list.presets.name",
       "settings": {
         "title": "Collections",
         "heading_size": "h1",
+        "collection_description": "",
+        "button_text": "",
+        "button_link": "",
         "image_ratio": "portrait",
+        "show_divider": true,
+        "divider_width": 105,
+        "divider_height": 105,
+        "divider_overlap": -50,
+        "divider_z_index": 10,
         "columns_desktop": 4,
         "color_scheme": "background-1",
         "show_view_all": false,
@@ -83,6 +92,168 @@
         "swipe_on_mobile": false,
         "padding_top": 36,
         "padding_bottom": 36
+      }
+    },
+    "featured_collection_APjzip": {
+      "type": "featured-collection",
+      "disabled": true,
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "title": "Featured collection",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "rings",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "background-1",
+        "image_ratio": "adapt",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_banner_ygwAEg": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_c8wTaT": {
+          "type": "heading",
+          "settings": {
+            "heading": "Diamonds",
+            "heading_size": "h0"
+          }
+        },
+        "text_4CXfHF": {
+          "type": "text",
+          "settings": {
+            "text": "Search for the finest diamonds based on cut, carat, clarity, color, and price.",
+            "text_style": "body"
+          }
+        },
+        "buttons_j8Km6a": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Search For A Diamond",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "Email A Diamond Expert",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_c8wTaT",
+        "text_4CXfHF",
+        "buttons_j8Km6a"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/diamond-bg.jpg",
+        "image_overlay_opacity": 0,
+        "image_height": "adapt",
+        "desktop_content_position": "middle-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "color_scheme": "background-1",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
+    "banner_with_collection_rq7rRX": {
+      "type": "banner-with-collection",
+      "name": "Banner With Collection",
+      "settings": {
+        "color_scheme": "",
+        "background_color": "rgba(0,0,0,0)",
+        "full_width": true,
+        "tagline": "",
+        "heading": "",
+        "content_vertical": "bottom",
+        "content_horizontal": "right",
+        "subheading_color": "#ffffff",
+        "heading_color": "#ffffff",
+        "text_color": "#ffffff",
+        "button_color": "#ffffff",
+        "description": "",
+        "collection": "rings",
+        "products_to_show": 4,
+        "products_per_row": 2,
+        "layout": "left",
+        "banner_width": 50,
+        "grid_gap": 24,
+        "banner_image": "shopify://shop_images/rings-collection-promo.jpg",
+        "banner_link": "",
+        "banner_height": 800,
+        "banner_radius": 0,
+        "banner_subheading": "",
+        "banner_heading": "Rings",
+        "banner_text": "",
+        "banner_button": "Shop all",
+        "image_ratio": "square",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": false,
+        "show_view_all": true,
+        "view_all_text": "View all",
+        "view_all_link": "shopify://pages/our-products",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "banner_with_collection_QC3htG": {
+      "type": "banner-with-collection",
+      "name": "Banner With Collection",
+      "settings": {
+        "color_scheme": "",
+        "background_color": "rgba(0,0,0,0)",
+        "full_width": false,
+        "tagline": "",
+        "heading": "",
+        "content_vertical": "bottom",
+        "content_horizontal": "right",
+        "subheading_color": "#ffffff",
+        "heading_color": "#ffffff",
+        "text_color": "#ffffff",
+        "button_color": "#ffffff",
+        "description": "",
+        "collection": "earrings",
+        "products_to_show": 4,
+        "products_per_row": 2,
+        "layout": "left",
+        "banner_width": 40,
+        "grid_gap": 24,
+        "banner_image": "shopify://shop_images/earrings-collection-promo.jpg",
+        "banner_link": "",
+        "banner_height": 700,
+        "banner_radius": 0,
+        "banner_subheading": "",
+        "banner_heading": "Earrings",
+        "banner_text": "",
+        "banner_button": "Shop all",
+        "image_ratio": "square",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": false,
+        "show_view_all": true,
+        "view_all_text": "View all",
+        "view_all_link": "shopify://pages/our-products",
+        "padding_top": 0,
+        "padding_bottom": 0
       }
     },
     "featured_blog_rd4aKy": {
@@ -102,12 +273,53 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "custom_text_card_HHxMef": {
+      "type": "custom-text-card",
+      "name": "Card Banner",
+      "settings": {
+        "background_image": "shopify://shop_images/Rectangle_35.png",
+        "mobile_background_image": "shopify://shop_images/Rectangle_35.png",
+        "desktop_height": 540,
+        "mobile_height": 450,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "overlay_color": "#000000",
+        "overlay_opacity": 0,
+        "card_width": 460,
+        "card_padding": 40,
+        "card_background": "#ffffff",
+        "card_border_width": 2,
+        "card_border_color": "#8fd8ff",
+        "card_border_radius": 0,
+        "card_shadow": true,
+        "text_alignment": "center",
+        "heading": "<h2><strong>CREATE</strong></h2>",
+        "heading_size": 54,
+        "heading_color": "#111111",
+        "tagline": "With A Third Generation Diamond Dealer.",
+        "tagline_size": 16,
+        "tagline_color": "#222222",
+        "description": "It all starts with an email.",
+        "description_size": 14,
+        "description_color": "#555555",
+        "button_label": "Email Ran",
+        "button_link": "",
+        "button_background": "#ffffff",
+        "button_text_color": "#111111",
+        "button_radius": 0
+      }
     }
   },
   "order": [
     "banner",
     "product-grid",
     "collection_list_rL4GNX",
-    "featured_blog_rd4aKy"
+    "featured_collection_APjzip",
+    "image_banner_ygwAEg",
+    "banner_with_collection_rq7rRX",
+    "banner_with_collection_QC3htG",
+    "featured_blog_rd4aKy",
+    "custom_text_card_HHxMef"
   ]
 }

@@ -1,0 +1,35 @@
+<div class="two-collections-cards">
+  <a href="{{ product.url }}" class="collections-card-wrapper">
+    <div class="collections-card-image">
+      {% if product.featured_image %}
+        {{
+          product.featured_image | image_url: width: 700 | image_tag: loading: 'lazy', widths: '300,500,700', class: 'product-image'
+        }}
+      {% endif %}
+    </div>
+    <div
+  class="collections-card-text-wrapper"
+  style="
+    --card-title-size:{{ section.settings.card_title_size }}px;
+    --card-title-weight:{{ section.settings.card_title_weight }};
+    --card-title-color:{{ section.settings.card_title_color }};
+
+    --card-price-size:{{ section.settings.card_price_size }}px;
+    --card-price-weight:{{ section.settings.card_price_weight }};
+    --card-price-color:{{ section.settings.card_price_color }};
+     --card-heading-width:{{ section.settings.card_heading_max_width}}px;
+  "
+>
+    {% comment %} /* --card-heading-width: {{ card_heading_max_width }}px; */ {% endcomment %}
+
+      <div class="collecitons-card-heading">
+        {{ product.title }}
+      </div>
+      <div class="collecitons-card-price">
+        {{ product.price | money }}
+      </div>
+    {% comment %} {{ product.vendor }} {% endcomment %}
+    {% comment %} {{ product.metafields.reviews.rating.value }} {% endcomment %}
+    </div>
+  </a>
+</div>

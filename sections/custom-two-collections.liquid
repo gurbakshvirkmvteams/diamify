@@ -1,0 +1,354 @@
+{% comment %} Two collection and 6 products from both collections {% endcomment %}
+<style>
+  .collecions-container {}
+
+.banner-cards-container {}
+.two-collections-cards {}
+
+</style>
+{% style %}
+  .collecitons-card-heading {
+    margin-top: 12px;
+    color: var(--card-title-color);
+    font-size: var(--card-title-size);
+    font-weight: var(--card-title-weight);
+    line-height: 1.5;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    max-width: var(--card-heading-width);
+    margin-inline: auto;
+  }
+  .collecitons-card-price {
+    margin-top: 8px;
+    color: var(--card-price-color);
+    font-size: var(--card-price-size);
+    font-weight: var(--card-price-weight);
+  }
+  .collecitons-card-price {
+    margin-top: 8px;
+    color: var(--card-price-color);
+    font-size: var(--card-price-size);
+    font-weight: var(--card-price-weight);
+  }
+ .collections-banner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .collections-banner-wrapper {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+  .banner-heading {
+    display: flex;
+    gap: 10px;
+  }
+  .banner-heading h1 {
+    margin: 0;
+  }
+  .banner-heading-name {
+    text-transform: capitalize;
+  }
+  .banner-cards-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .collections-card-wrapper {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .collections-card-image {
+    aspect-ratio: 1;
+    overflow: hidden;
+  }
+
+  .collections-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: 0.35s;
+  }
+
+  .collections-card-wrapper:hover img {
+    transform: scale(1.05);
+  }
+  .collections-card-text-wrapper {
+    text-align: center;
+  }
+  .collecitons-card-heading {
+    font-weight: 450;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 10%;
+    text-align: center;
+  }
+  .collecitons-card-price {
+    margin-top: 8px;
+  }
+  @media (max-width: 768px) {
+    .banner-cards-wrapper {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+{% endstyle %}
+{%- if section.settings.banner_image != blank -%}
+  <div class="collecions-container" style="padding-top:{{ section.settings.padding_top }}px; padding-bottom:{{ section.settings.padding_bottom }}px;">
+    <div class="collections-banner-wrapper" style="background-image:url('{{ section.settings.banner_image | image_url: width: 2000 }}'); height:{{ section.settings.banner_height }}px">
+      <div class="collections-banner page-width" style="
+                    justify-content:
+                    {% case section.settings.banner_content_vertical %}
+                    {% when 'top' %}flex-start
+                    {% when 'center' %}center
+                    {% else %}flex-end
+                    {% endcase %};
+
+                    align-items:
+                    {% case section.settings.banner_content_horizontal %}
+                    {% when 'left' %}flex-start
+                    {% when 'center' %}center
+                    {% when 'right' %}flex-end
+                    {% endcase %};
+                ">
+        {% assign collection_1 = section.settings.first_collection %}
+        {% assign collection_2 = section.settings.second_collection %}
+        {% comment %} <h1>{{ collection_1.all_products_count | json }} {{ collection_2.all_products_count | json }}</h1> {% endcomment %}
+        <div class="banner-heading">
+          {% if collection_1 != blank %}
+            <h1 class="banner-heading-name" style="font-size:{{ section.settings.banner_heading_size }}px; color:{{ section.settings.banner_heading_color }}; font-weight:{{ section.settings.banner_heading_weight }};">{{ collection_1.title }}</h1>
+          {% endif %}
+          {% if collection_1 != blank and collection_2 != blank %}
+            <h1 style="font-size:{{ section.settings.banner_heading_size }}px; color:{{ section.settings.banner_heading_color }}; font-weight:{{ section.settings.banner_heading_weight }};">&</h1>
+          {% endif %}
+          {% if collection_2 != blank %}
+            <h1 class="banner-heading-name" style="font-size:{{ section.settings.banner_heading_size }}px; color:{{ section.settings.banner_heading_color }}; font-weight:{{ section.settings.banner_heading_weight }};">{{ collection_2.title }}</h1>
+          {% endif %}
+        </div>
+        <div class="hero-buttons" style="margin-top:{{ section.settings.buttons_margin_top }}px">
+          {% if collection_1 %}
+            <a href="{{ collection_1.url }}" class="hero-btn">
+              Shop {{ collection_1.title }}
+            </a>
+          {% endif %}
+          {% if collection_2 %}
+            <a href="{{ collection_2.url }}" class="hero-btn">
+              Shop {{ collection_2.title }}
+            </a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="banner-cards-container page-width">
+      <div class="banner-cards-wrapper" style="padding-top: {{ section.settings.cards_padding_top }}px;">
+        {% comment %} <div class="two-collections-cards">
+                                                                                          <div class="collections-card-wrapper">
+                                                                                          <div class="collections-card-image"></div>
+                                                                                          <div class="collections-card-text-wrapper">
+                                                                                              <div class="collecitons-card-heading">FLEXIBLE GOLD AND DIAMOND BANGLE</div>
+                                                                                              <div class="collecitons-card-price">$1,375</div>
+                                                                                          </div>
+                                                                                          </div>
+                                                                        </div> {% endcomment %}
+        {% if collection_1 %}
+
+          {% for product in collection_1.products limit: 3 %}
+            {% render 'custom-two-collection-card'
+              , product: product %}
+          {% endfor %}
+
+        {% endif %}
+        {% if collection_2 %}
+
+          {% for product in collection_2.products limit: 3 %}
+            {% render 'custom-two-collection-card'
+              , product: product %}
+          {% endfor %}
+
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+{% schema %}
+  {
+    "name": "Custom Two Collections",
+    "disabled_on": {
+      "groups": ["header", "footer"]
+    },
+    "settings": [
+      {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_top",
+        "default": 36
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_bottom",
+        "default": 36
+      },
+      {
+        "type": "image_picker",
+        "id": "banner_image",
+        "label": "Banner Background"
+      },
+      {
+        "type": "select",
+        "id": "banner_content_vertical",
+        "label": "Banner Content vertical",
+        "default": "bottom",
+        "options": [
+          {
+            "value": "top",
+            "label": "Top"
+          }, {
+            "value": "center",
+            "label": "Center"
+          }, {
+            "value": "bottom",
+            "label": "Bottom"
+          }
+        ]
+      }, {
+        "type": "select",
+        "id": "banner_content_horizontal",
+        "label": "Banner Content Horizontal",
+        "default": "left",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          }, {
+            "value": "center",
+            "label": "Center"
+          }, {
+            "value": "right",
+            "label": "Right"
+          }
+        ]
+      }, {
+        "type": "range",
+        "id": "banner_height",
+        "label": "Banner Height",
+        "min": 300,
+        "max": 900,
+        "step": 10,
+        "unit": "px",
+        "default": 600
+      }, {
+        "type": "range",
+        "id": "buttons_margin_top",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "Buttons Margin Top",
+        "default": 36
+      }, {
+        "type": "collection",
+        "id": "first_collection",
+        "label": "First Collection"
+      }, {
+        "type": "collection",
+        "id": "second_collection",
+        "label": "Second Collection"
+      }, {
+        "type": "range",
+        "id": "cards_padding_top",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Cards Section Padding Top",
+        "default": 36
+      },
+
+// copied schema
+      {
+        "type": "header",
+        "content": "Typography"
+      }, {
+        "type": "range",
+        "id": "banner_heading_size",
+        "label": "Banner Heading Size",
+        "min": 24,
+        "max": 80,
+        "step": 2,
+        "default": 48
+      }, {
+        "type": "color",
+        "id": "banner_heading_color",
+        "label": "Banner Heading Color",
+        "default": "#ffffff"
+      }, {
+        "type": "text",
+        "id": "banner_heading_weight",
+        "label": "Banner Heading Weight",
+        "default": "600"
+      }, {
+        "type": "range",
+        "id": "card_title_size",
+        "label": "Card Title Size",
+        "min": 10,
+        "max": 32,
+        "step": 1,
+        "default": 14
+      }, {
+        "type": "color",
+        "id": "card_title_color",
+        "label": "Card Title Color",
+        "default": "#000000"
+      },{
+  "type": "range",
+  "id": "card_heading_max_width",
+  "label": "Card Heading Max Width",
+  "min": 100,
+  "max": 500,
+  "step": 10,
+  "unit": "px",
+  "default": 220
+}, {
+        "type": "text",
+        "id": "card_title_weight",
+        "label": "Card Title Weight",
+        "default": "500"
+      }, {
+        "type": "range",
+        "id": "card_price_size",
+        "label": "Price Size",
+        "min": 10,
+        "max": 32,
+        "step": 1,
+        "default": 16
+      }, {
+        "type": "color",
+        "id": "card_price_color",
+        "label": "Price Color",
+        "default": "#000000"
+      }, {
+        "type": "text",
+        "id": "card_price_weight",
+        "label": "Price Weight",
+        "default": "600"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Custom Two Collections"
+      }
+    ]
+  }
+{% endschema %}
