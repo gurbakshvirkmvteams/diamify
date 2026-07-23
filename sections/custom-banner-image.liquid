@@ -1,0 +1,462 @@
+<style>
+  .collections-banner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .collections-banner-wrapper {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+  .banner-image-heading {
+    display: flex;
+    flex-direction: column;
+  }
+  .banner-heading div h1 {}
+.banner-heading-name * {
+  margin: 0;
+  width: fit-content;
+
+  text-transform: capitalize;
+  font-weight: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+.banner-heading-description {
+    display: flex;
+    flex-direction: column;
+}
+.banner-heading-description *{
+    display: inherit;
+     flex-direction: inherit;
+     align-items: inherit;
+}
+</style>
+{%- if section.settings.banner_image != blank -%}
+  <div class="collecions-container" style="padding-top:{{ section.settings.padding_top }}px; padding-bottom:{{ section.settings.padding_bottom }}px;">
+    <div class="collections-banner-wrapper" style="background-image:url('{{ section.settings.banner_image | image_url: width: 2000 }}'); height:{{ section.settings.banner_height }}px">
+      <div class="collections-banner page-width" style="
+                    justify-content:
+                    {% case section.settings.banner_content_vertical %}
+                    {% when 'top' %}flex-start
+                    {% when 'center' %}center
+                    {% else %}flex-end
+                    {% endcase %};
+
+                    align-items:
+                    {% case section.settings.banner_content_horizontal %}
+                    {% when 'left' %}flex-start
+                    {% when 'center' %}center
+                    {% when 'right' %}flex-end
+                    {% endcase %};
+                    
+                ">
+        <div class="banner-image-heading" style="align-items:{{ section.settings.banner_content_horizontal }}">
+          {% if section.settings.banner_heading != blank %}
+            <div class="banner-heading-name" style="font-size:{{ section.settings.banner_heading_size }}px; color:{{ section.settings.banner_heading_color }}; font-weight:{{ section.settings.banner_heading_weight }};">{{ section.settings.banner_heading }}</div>
+          {% endif %}
+          {% if section.settings.banner_description != blank %}
+            <div
+                class="banner-heading-description"
+                style="
+                    font-size:{{ section.settings.banner_description_size }}px;
+                    color:{{ section.settings.banner_description_color }};
+                    font-weight:{{ section.settings.banner_description_weight }};
+                    max-width:{{ section.settings.banner_description_width }}px;
+
+                    text-align:
+                    {% case section.settings.banner_content_horizontal %}
+                    {% when 'left' %}left
+                    {% when 'center' %}center
+                    {% when 'right' %}right
+                    {% endcase %};
+
+                    align-items:
+                    {% case section.settings.banner_content_horizontal %}
+                    {% when 'left' %}flex-start
+                    {% when 'center' %}center
+                    {% when 'right' %}flex-end
+                    {% endcase %};
+                "
+                >
+              {{ section.settings.banner_description }}
+            </div>
+          {% endif %}
+        </div>
+        <div class="hero-buttons" style="
+                margin-top:{{ section.settings.buttons_margin_top }}px;
+                display:flex;
+                gap:{{ section.settings.button_gap }}px;
+            ">
+          {% if section.settings.button_1_text != blank %}
+            <a href="{{ section.settings.button_1_link }}" style="
+                    color:{{ section.settings.button_text_color }};
+                    background:{{ section.settings.button_background }};
+                    font-size:{{ section.settings.button_font_size }}px;
+                    font-weight:{{ section.settings.button_font_weight }};
+                    letter-spacing:{{ section.settings.button_letter_spacing }}px;
+                    text-transform:{{ section.settings.button_text_transform }};
+                    padding:
+                    {{ section.settings.button_padding_top }}px
+                    {{ section.settings.button_padding_right }}px
+                    {{ section.settings.button_padding_bottom }}px
+                    {{ section.settings.button_padding_left }}px;
+                    {% if section.settings.button_show_border %}
+                    border-bottom:{{ section.settings.button_border_width }}px solid {{ section.settings.button_border_color }};
+                    {% else %}
+                    border:none;
+                    {% endif %}
+                    padding-bottom:{{ section.settings.button_border_spacing }}px;
+                    text-decoration:none;
+                    display:inline-block;
+                ">
+                {{ section.settings.button_1_text }}
+            </a>
+          {% endif %}
+
+          {% if section.settings.button_2_text != blank %}
+            <a href="{{ section.settings.button_2_link }}" style="
+                    color:{{ section.settings.button_text_color }};
+                    background:{{ section.settings.button_background }};
+                    font-size:{{ section.settings.button_font_size }}px;
+                    font-weight:{{ section.settings.button_font_weight }};
+                    letter-spacing:{{ section.settings.button_letter_spacing }}px;
+                    text-transform:{{ section.settings.button_text_transform }};
+                    padding:
+                    {{ section.settings.button_padding_top }}px
+                    {{ section.settings.button_padding_right }}px
+                    {{ section.settings.button_padding_bottom }}px
+                    {{ section.settings.button_padding_left }}px;
+                    {% if section.settings.button_show_border %}
+                    border-bottom:{{ section.settings.button_border_width }}px solid {{ section.settings.button_border_color }};
+                    {% else %}
+                    border:none;
+                    {% endif %}
+                    padding-bottom:{{ section.settings.button_border_spacing }}px;
+                    text-decoration:none;
+                    display:inline-block;
+                ">
+               {{ section.settings.button_2_text }}
+            </a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+{% schema %}
+  {
+    "name": "Custom Two Collections",
+    "disabled_on": {
+      "groups": ["header", "footer"]
+    },
+    "settings": [
+      {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_top",
+        "default": 36
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_bottom",
+        "default": 36
+      },
+      {
+        "type": "image_picker",
+        "id": "banner_image",
+        "label": "Banner Background"
+      },
+      {
+        "type": "richtext",
+        "id": "banner_heading",
+        "label": "Banner Heading"
+      }, {
+        "type": "richtext",
+        "id": "banner_description",
+        "label": "Banner Description"
+      }, {
+        "type": "select",
+        "id": "banner_content_vertical",
+        "label": "Banner Content vertical",
+        "default": "bottom",
+        "options": [
+          {
+            "value": "top",
+            "label": "Top"
+          }, {
+            "value": "center",
+            "label": "Center"
+          }, {
+            "value": "bottom",
+            "label": "Bottom"
+          }
+        ]
+      }, {
+        "type": "select",
+        "id": "banner_content_horizontal",
+        "label": "Banner Content Horizontal",
+        "default": "left",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          }, {
+            "value": "center",
+            "label": "Center"
+          }, {
+            "value": "right",
+            "label": "Right"
+          }
+        ]
+      }, {
+        "type": "range",
+        "id": "banner_height",
+        "label": "Banner Height",
+        "min": 300,
+        "max": 900,
+        "step": 10,
+        "unit": "px",
+        "default": 600
+      }, {
+        "type": "range",
+        "id": "buttons_margin_top",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "Buttons Margin Top",
+        "default": 36
+      }, {
+        "type": "header",
+        "content": "Typography"
+      }, {
+        "type": "range",
+        "id": "banner_heading_size",
+        "label": "Banner Heading Size",
+        "min": 24,
+        "max": 80,
+        "step": 2,
+        "default": 48
+      }, {
+        "type": "color",
+        "id": "banner_heading_color",
+        "label": "Banner Heading Color",
+        "default": "#ffffff"
+      }, {
+        "type": "text",
+        "id": "banner_heading_weight",
+        "label": "Banner Heading Weight",
+        "default": "600"
+      }, {
+        "type": "range",
+        "id": "banner_description_size",
+        "label": "Banner Description Size",
+        "min": 12,
+        "max": 40,
+        "step": 1,
+        "default": 18
+      }, {
+        "type": "color",
+        "id": "banner_description_color",
+        "label": "Banner Description Color",
+        "default": "#ffffff"
+      }, {
+        "type": "text",
+        "id": "banner_description_weight",
+        "label": "Banner Description Weight",
+        "default": "400"
+      }, {
+        "type": "range",
+        "id": "banner_description_width",
+        "label": "Banner Description Width",
+        "min": 200,
+        "max": 900,
+        "step": 20,
+        "unit": "px",
+        "default": 500
+      }, {
+        "type": "header",
+        "content": "Primary Button"
+      }, {
+        "type": "text",
+        "id": "button_1_text",
+        "label": "Button 1 Text",
+        "default": "Shop Now"
+      }, {
+        "type": "url",
+        "id": "button_1_link",
+        "label": "Button 1 Link"
+      },   {
+        "type": "header",
+        "content": "Secondary Button"
+      }, {
+        "type": "text",
+        "id": "button_2_text",
+        "label": "Button 2 Text",
+        "default": "Learn More"
+      }, {
+        "type": "url",
+        "id": "button_2_link",
+        "label": "Button 2 Link"
+      },  {
+        "type": "range",
+        "id": "button_padding_y",
+        "label": "Button Vertical Padding",
+        "min": 8,
+        "max": 30,
+        "step": 2,
+        "default": 14
+      }, {
+        "type": "range",
+        "id": "button_padding_x",
+        "label": "Button Horizontal Padding",
+        "min": 20,
+        "max": 60,
+        "step": 2,
+        "default": 32
+      },     {
+        "type": "header",
+        "content": "Button Typography"
+      }, {
+        "type": "range",
+        "id": "button_font_size",
+        "label": "Button Font Size",
+        "min": 10,
+        "max": 30,
+        "step": 1,
+        "default": 15
+      }, {
+        "type": "text",
+        "id": "button_font_weight",
+        "label": "Button Font Weight",
+        "default": "500"
+      }, {
+        "type": "range",
+        "id": "button_letter_spacing",
+        "label": "Button Letter Spacing",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "default": 1
+      }, {
+        "type": "select",
+        "id": "button_text_transform",
+        "label": "Text Transform",
+        "default": "none",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          }, {
+            "value": "uppercase",
+            "label": "Uppercase"
+          }, {
+            "value": "capitalize",
+            "label": "Capitalize"
+          }
+        ]
+      }, {
+        "type": "header",
+        "content": "Button Layout"
+      }, {
+        "type": "range",
+        "id": "button_gap",
+        "label": "Gap",
+        "min": 0,
+        "max": 80,
+        "step": 2,
+        "default": 40
+      }, {
+        "type": "range",
+        "id": "button_padding_top",
+        "label": "Top Padding",
+        "min": 0,
+        "max": 30,
+        "step": 2,
+        "default": 6
+      }, {
+        "type": "range",
+        "id": "button_padding_bottom",
+        "label": "Bottom Padding",
+        "min": 0,
+        "max": 30,
+        "step": 2,
+        "default": 6
+      }, {
+        "type": "range",
+        "id": "button_padding_left",
+        "label": "Left Padding",
+        "min": 0,
+        "max": 40,
+        "step": 2,
+        "default": 0
+      }, {
+        "type": "range",
+        "id": "button_padding_right",
+        "label": "Right Padding",
+        "min": 0,
+        "max": 40,
+        "step": 2,
+        "default": 0
+      }, {
+        "type": "header",
+        "content": "Button Underline"
+      }, {
+        "type": "checkbox",
+        "id": "button_show_border",
+        "label": "Show Bottom Border",
+        "default": true
+      }, {
+        "type": "range",
+        "id": "button_border_width",
+        "label": "Border Width",
+        "min": 1,
+        "max": 5,
+        "step": 1,
+        "default": 1
+      }, {
+        "type": "color",
+        "id": "button_border_color",
+        "label": "Border Color",
+        "default": "#000000"
+      }, {
+        "type": "range",
+        "id": "button_border_spacing",
+        "label": "Space Below Text",
+        "min": 0,
+        "max": 12,
+        "step": 1,
+        "default": 4
+      }, {
+        "type": "header",
+        "content": "Button Colors"
+      }, {
+        "type": "color",
+        "id": "button_text_color",
+        "label": "Text Color",
+        "default": "#000000"
+      }, {
+        "type": "color",
+        "id": "button_background",
+        "label": "Background",
+        "default": "transparent"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Custom Image Text Buttons"
+      }
+    ]
+  }
+{% endschema %}
