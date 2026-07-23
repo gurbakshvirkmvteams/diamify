@@ -364,6 +364,23 @@
         "button_text_color": "#111111",
         "button_radius": 0
       }
+    },
+    "custom_two_collections_FGpbiz": {
+      "type": "custom-two-collections",
+      "disabled": true,
+      "name": "Custom Two Collections",
+      "settings": {
+        "padding_top": 8,
+        "padding_bottom": 100,
+        "banner_image": "shopify://shop_images/Group_98.jpg",
+        "banner_content_vertical": "center",
+        "banner_content_horizontal": "center",
+        "banner_height": 480,
+        "buttons_margin_top": 0,
+        "first_collection": "earrings",
+        "second_collection": "rings",
+        "cards_padding_top": 44
+      }
     }
   },
   "order": [
@@ -376,6 +393,7 @@
     "custom_image_text_gpLHci",
     "custom_hero_39BmNA",
     "featured_blog_wTqtfW",
-    "custom_text_card_wn4eB7"
+    "custom_text_card_wn4eB7",
+    "custom_two_collections_FGpbiz"
   ]
 }

@@ -123,55 +123,6 @@
         "padding_bottom": 36
       }
     },
-    "image_banner_ygwAEg": {
-      "type": "image-banner",
-      "blocks": {
-        "heading_c8wTaT": {
-          "type": "heading",
-          "settings": {
-            "heading": "Diamonds",
-            "heading_size": "h0"
-          }
-        },
-        "text_4CXfHF": {
-          "type": "text",
-          "settings": {
-            "text": "Search for the finest diamonds based on cut, carat, clarity, color, and price.",
-            "text_style": "body"
-          }
-        },
-        "buttons_j8Km6a": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "Search For A Diamond",
-            "button_link_1": "",
-            "button_style_secondary_1": false,
-            "button_label_2": "Email A Diamond Expert",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "heading_c8wTaT",
-        "text_4CXfHF",
-        "buttons_j8Km6a"
-      ],
-      "name": "t:sections.image-banner.presets.name",
-      "settings": {
-        "image": "shopify://shop_images/diamond-bg.jpg",
-        "image_overlay_opacity": 0,
-        "image_height": "adapt",
-        "desktop_content_position": "middle-center",
-        "show_text_box": true,
-        "desktop_content_alignment": "center",
-        "color_scheme": "background-1",
-        "image_behavior": "none",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": true,
-        "show_text_below": true
-      }
-    },
     "banner_with_collection_rq7rRX": {
       "type": "banner-with-collection",
       "name": "Banner With Collection",
@@ -220,11 +171,11 @@
       "settings": {
         "color_scheme": "",
         "background_color": "rgba(0,0,0,0)",
-        "full_width": false,
+        "full_width": true,
         "tagline": "",
         "heading": "",
         "content_vertical": "bottom",
-        "content_horizontal": "right",
+        "content_horizontal": "left",
         "subheading_color": "#ffffff",
         "heading_color": "#ffffff",
         "text_color": "#ffffff",
@@ -233,12 +184,12 @@
         "collection": "earrings",
         "products_to_show": 4,
         "products_per_row": 2,
-        "layout": "left",
-        "banner_width": 40,
+        "layout": "right",
+        "banner_width": 50,
         "grid_gap": 24,
         "banner_image": "shopify://shop_images/earrings-collection-promo.jpg",
         "banner_link": "",
-        "banner_height": 700,
+        "banner_height": 800,
         "banner_radius": 0,
         "banner_subheading": "",
         "banner_heading": "Earrings",
@@ -254,6 +205,32 @@
         "view_all_link": "shopify://pages/our-products",
         "padding_top": 0,
         "padding_bottom": 0
+      }
+    },
+    "custom_two_collections_zKnCtF": {
+      "type": "custom-two-collections",
+      "name": "Custom Two Collections",
+      "settings": {
+        "padding_top": 8,
+        "padding_bottom": 100,
+        "banner_image": "shopify://shop_images/Group_98.jpg",
+        "banner_content_vertical": "center",
+        "banner_content_horizontal": "center",
+        "banner_height": 480,
+        "buttons_margin_top": 36,
+        "first_collection": "rings",
+        "second_collection": "earrings",
+        "cards_padding_top": 64,
+        "banner_heading_size": 48,
+        "banner_heading_color": "#131313",
+        "banner_heading_weight": "500",
+        "card_title_size": 14,
+        "card_title_color": "#131313",
+        "card_heading_max_width": 220,
+        "card_title_weight": "450",
+        "card_price_size": 14,
+        "card_price_color": "#999999",
+        "card_price_weight": "450"
       }
     },
     "featured_blog_rd4aKy": {
@@ -309,6 +286,49 @@
         "button_text_color": "#111111",
         "button_radius": 0
       }
+    },
+    "custom_banner_image_CWXUUm": {
+      "type": "custom-banner-image",
+      "name": "Custom Image Text Buttons",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "banner_image": "shopify://shop_images/diamond-bg.jpg",
+        "banner_heading": "<h1>Diamonds</h1>",
+        "banner_description": "<p>Search for the finest diamonds based on cut, carat, clarity, color, and price.</p>",
+        "banner_content_vertical": "center",
+        "banner_content_horizontal": "center",
+        "banner_height": 480,
+        "buttons_margin_top": 36,
+        "banner_heading_size": 64,
+        "banner_heading_color": "#131313",
+        "banner_heading_weight": "550",
+        "banner_description_size": 16,
+        "banner_description_color": "#131313",
+        "banner_description_weight": "450",
+        "banner_description_width": 320,
+        "button_1_text": "Search For A Diamond",
+        "button_1_link": "",
+        "button_2_text": "Email A Diamond Expert",
+        "button_2_link": "",
+        "button_padding_y": 8,
+        "button_padding_x": 20,
+        "button_font_size": 16,
+        "button_font_weight": "600",
+        "button_letter_spacing": 1,
+        "button_text_transform": "none",
+        "button_gap": 48,
+        "button_padding_top": 6,
+        "button_padding_bottom": 6,
+        "button_padding_left": 0,
+        "button_padding_right": 0,
+        "button_show_border": true,
+        "button_border_width": 1,
+        "button_border_color": "#9fdef2",
+        "button_border_spacing": 4,
+        "button_text_color": "#000000",
+        "button_background": "rgba(0,0,0,0)"
+      }
     }
   },
   "order": [
@@ -316,9 +336,10 @@
     "product-grid",
     "collection_list_rL4GNX",
     "featured_collection_APjzip",
-    "image_banner_ygwAEg",
     "banner_with_collection_rq7rRX",
     "banner_with_collection_QC3htG",
+    "custom_two_collections_zKnCtF",
+    "custom_banner_image_CWXUUm",
     "featured_blog_rd4aKy",
     "custom_text_card_HHxMef"
   ]
