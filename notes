@@ -32,3 +32,13 @@
 -- Edited shopify dawn theme blog section code to match figma Taglines headings and cards
 -- Edited Header section code to show hero section
 -- Recreated hero seciton in a separate file to render different images in home and collection page and no image in product page
+
+
+
+
+ {
+  "type": "checkbox",
+  "id": "transparent_media",
+  "label": "Transparent media background",
+  "default": true
+},

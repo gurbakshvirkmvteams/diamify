@@ -1,0 +1,73 @@
+<link rel="stylesheet" href="{{ 'custom.css' | asset_url }}">
+
+{% for block in section.blocks %}
+  {% if block.type == 'hero-block' %}
+
+    <section class="custom-hero">
+
+      <div class="custom-hero__bg">
+        {% if request.page_type == 'collection' and block.settings.collection_background_Image %}
+          {{
+            block.settings.collection_background_Image
+            | image_url: width: 2200
+            | image_tag: class: 'hero-bg-image'
+          }}
+        {% else %}
+          {{
+            block.settings.all_background_Image
+            | image_url: width: 2200
+            | image_tag: class: 'hero-bg-image'
+          }}
+        {% endif %}
+      </div>
+
+      <div
+        class="custom-hero__content"
+        style="
+          padding-top:{{ block.settings.padding_top }}px;
+          padding-bottom:{{ block.settings.padding_bottom }}px;
+          padding-left:{{ block.settings.padding_left }}px;
+          padding-right:{{ block.settings.padding_right }}px;
+        ">
+
+        {% if block.settings.hero_heading != blank %}
+          <div
+            class="hero-heading"
+            style="margin-bottom:{{ block.settings.heading_margin_bottom }}px;"
+          >
+            {{ block.settings.hero_heading }}
+          </div>
+        {% endif %}
+
+        {% if block.settings.hero_description != blank %}
+          <div
+            class="hero-description"
+            style="margin-bottom:{{ block.settings.description_margin_bottom }}px;"
+          >
+            {{ block.settings.hero_description }}
+          </div>
+        {% endif %}
+
+        <div class="hero-buttons">
+
+          {% if block.settings.left_button_text != blank %}
+            <a href="{{ block.settings.left_button_link }}" class="hero-btn">
+              {{ block.settings.left_button_text }}
+            </a>
+          {% endif %}
+
+          {% if block.settings.right_button_text != blank %}
+            <a href="{{ block.settings.right_button_link }}" class="hero-btn">
+              {{ block.settings.right_button_text }}
+            </a>
+          {% endif %}
+
+        </div>
+
+      </div>
+
+    </section>
+
+  {% endif %}
+{% endfor %}
+
