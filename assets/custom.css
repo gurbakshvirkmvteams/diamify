@@ -292,3 +292,16 @@ letter-spacing: 5%;
 background-color: red !important;
 height: max-content;
 }
+
+.custom-product__info-wrapper .product-form__input input[type="radio"] + label{
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    border:1px solid #d9d9d9;
+    background:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:12px;
+    padding:0;
+}

@@ -42,3 +42,11 @@
   "label": "Transparent media background",
   "default": true
 },
+
+# Today's update:
+
+# Diamify
+-- Recreatedreated hero section to have different designs acoording to different pages.
+-- Modeified Shopify Dawn's header to support hero section under transparent layer
+-- Modified main product page product media and product info sections and made these sections responsive for all devices
+
